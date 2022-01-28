@@ -63,7 +63,7 @@
                   :key="item.name"
                   :to="item.to"
                   :class="[
-                    item.current
+                    item.current.value
                       ? 'bg-indigo-800 text-white'
                       : 'text-indigo-100 hover:bg-indigo-600',
                     'group flex items-center px-2 py-2 text-base font-medium rounded-md',
@@ -104,7 +104,7 @@
               :key="item.name"
               :to="item.to"
               :class="[
-                item.current
+                item.current.value
                   ? 'bg-indigo-800 text-white'
                   : 'text-indigo-100 hover:bg-indigo-600',
                 'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -184,21 +184,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   Dialog,
   DialogOverlay,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
 import {
   BellIcon,
-  CalendarIcon,
   ChartBarIcon,
   FolderIcon,
   HomeIcon,
@@ -208,11 +203,24 @@ import {
 import { SearchIcon } from '@heroicons/vue/solid'
 
 const sidebarOpen = ref(false)
-const pageName = computed(() => useRoute().name)
+const route = useRoute()
+const pageName = computed(() => route.name)
+const path = computed(() => route.path)
 
 const navigation = [
-  { name: 'Dashboard', to: '/', icon: HomeIcon, current: true },
-  { name: 'Projects', to: '/projects', icon: FolderIcon, current: false },
-  { name: 'Reports', to: '/reports', icon: ChartBarIcon, current: false },
+  { name: 'Dashboard', to: '/', icon: HomeIcon, current: ref(false) },
+  { name: 'Projects', to: '/projects', icon: FolderIcon, current: ref(false) },
+  { name: 'Reports', to: '/reports', icon: ChartBarIcon, current: ref(false) },
 ]
+
+watchEffect(() => {
+  navigation.forEach((navItem) => {
+    if (navItem.to === path.value) {
+      navItem.current.value = true
+      return
+    }
+
+    navItem.current.value = false
+  })
+})
 </script>

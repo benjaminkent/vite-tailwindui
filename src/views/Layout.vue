@@ -58,10 +58,10 @@
             </div>
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
               <nav class="px-2 space-y-1">
-                <a
+                <router-link
                   v-for="item in navigation"
                   :key="item.name"
-                  :href="item.href"
+                  :to="item.to"
                   :class="[
                     item.current
                       ? 'bg-indigo-800 text-white'
@@ -75,7 +75,7 @@
                     aria-hidden="true"
                   />
                   {{ item.name }}
-                </a>
+                </router-link>
               </nav>
             </div>
           </div>
@@ -99,10 +99,10 @@
         </div>
         <div class="mt-5 flex-1 flex flex-col">
           <nav class="flex-1 px-2 pb-4 space-y-1">
-            <a
+            <router-link
               v-for="item in navigation"
               :key="item.name"
-              :href="item.href"
+              :to="item.to"
               :class="[
                 item.current
                   ? 'bg-indigo-800 text-white'
@@ -116,7 +116,7 @@
                 aria-hidden="true"
               />
               {{ item.name }}
-            </a>
+            </router-link>
           </nav>
         </div>
       </div>
@@ -211,13 +211,8 @@ const sidebarOpen = ref(false)
 const pageName = computed(() => useRoute().name)
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Dashboard', to: '/', icon: HomeIcon, current: true },
+  { name: 'Projects', to: '/projects', icon: FolderIcon, current: false },
+  { name: 'Reports', to: '/reports', icon: ChartBarIcon, current: false },
 ]
 </script>

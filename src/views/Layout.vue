@@ -173,9 +173,7 @@
             </h1>
           </div>
           <div class="max-w-7xl mx-auto p-4 sm:px-6 md:px-8">
-            <!-- Replace with your content -->
             <slot></slot>
-            <!-- /End replace -->
           </div>
         </div>
       </main>

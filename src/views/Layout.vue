@@ -57,7 +57,7 @@
               />
             </div>
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
-              <nav class="px-2 space-y-1">
+              <nav class="pr-5">
                 <router-link
                   v-for="item in navigation"
                   :key="item.name"
@@ -66,11 +66,11 @@
                     item.current.value
                       ? 'bg-indigo-800 text-white'
                       : 'text-indigo-100 hover:bg-indigo-600',
-                    'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+                    'group flex items-center px-3 py-3 text-base font-medium rounded-r-md',
                   ]"
                 >
-                  <component
-                    :is="item.icon"
+                  <fa-icon
+                    :icon="item.icon"
                     class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
                     aria-hidden="true"
                   />
@@ -98,7 +98,7 @@
           />
         </div>
         <div class="mt-5 flex-1 flex flex-col">
-          <nav class="flex-1 px-2 pb-4 space-y-1">
+          <nav class="flex-1 pr-5 pb-4">
             <router-link
               v-for="item in navigation"
               :key="item.name"
@@ -107,11 +107,11 @@
                 item.current.value
                   ? 'bg-indigo-800 text-white'
                   : 'text-indigo-100 hover:bg-indigo-600',
-                'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                'group flex items-center px-3 py-3 text-sm font-medium rounded-r-md',
               ]"
             >
-              <component
-                :is="item.icon"
+              <fa-icon
+                :icon="item.icon"
                 class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
                 aria-hidden="true"
               />
@@ -170,6 +170,7 @@
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-3 bg-slate-500">
             <h1 class="text-2xl font-semibold text-white capitalize">
               {{ pageName }}
+              <fa-icon :icon="['fas', 'chart-line']" />
             </h1>
           </div>
           <div class="max-w-7xl mx-auto p-4 sm:px-6 md:px-8">
@@ -190,14 +191,7 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
-import {
-  BellIcon,
-  ChartBarIcon,
-  FolderIcon,
-  HomeIcon,
-  MenuAlt2Icon,
-  XIcon,
-} from '@heroicons/vue/outline'
+import { BellIcon, MenuAlt2Icon, XIcon } from '@heroicons/vue/outline'
 import { SearchIcon } from '@heroicons/vue/solid'
 
 const sidebarOpen = ref(false)
@@ -206,13 +200,28 @@ const pageName = computed(() => route.name)
 const path = computed(() => route.path)
 
 const navigation = [
-  { name: 'Dashboard', to: '/', icon: HomeIcon, current: ref(false) },
-  { name: 'Projects', to: '/projects', icon: FolderIcon, current: ref(false) },
-  { name: 'Reports', to: '/reports', icon: ChartBarIcon, current: ref(false) },
+  {
+    name: 'Dashboard',
+    to: '/',
+    icon: ['fas', 'chart-line'],
+    current: ref(false),
+  },
+  {
+    name: 'Projects',
+    to: '/projects',
+    icon: ['fas', 'diagram-project'],
+    current: ref(false),
+  },
+  {
+    name: 'Reports',
+    to: '/reports',
+    icon: ['fas', 'file-lines'],
+    current: ref(false),
+  },
   {
     name: 'Components',
     to: '/components',
-    icon: ChartBarIcon,
+    icon: ['fas', 'code'],
     current: ref(false),
   },
 ]

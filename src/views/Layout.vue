@@ -209,6 +209,12 @@ const navigation = [
   { name: 'Dashboard', to: '/', icon: HomeIcon, current: ref(false) },
   { name: 'Projects', to: '/projects', icon: FolderIcon, current: ref(false) },
   { name: 'Reports', to: '/reports', icon: ChartBarIcon, current: ref(false) },
+  {
+    name: 'Components',
+    to: '/components',
+    icon: ChartBarIcon,
+    current: ref(false),
+  },
 ]
 
 watchEffect(() => {

@@ -2,9 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import './index.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-const app = createApp(App)
+library.add(faPhone)
 
-app.use(router)
-
-app.mount('#app')
+createApp(App).use(router).component('fa-icon', FontAwesomeIcon).mount('#app')

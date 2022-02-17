@@ -6,6 +6,7 @@
         :style="`transform: rotate(${45 + localProgress * 1.8}deg);`"
       ></div>
       <div
+        v-if="hasTarget"
         :class="[
           'target-line border-t-3',
           'border-dashed',
@@ -13,7 +14,7 @@
         ]"
       ></div>
     </div>
-    <div class="target">
+    <div v-if="hasTarget" class="target">
       <p class="text-sm">Target</p>
       <p class="text-sm font-bold">{{ target }}</p>
     </div>
@@ -26,6 +27,7 @@ import { computed, onMounted, ref } from 'vue'
 const props = defineProps<{
   progress: number
   target: number
+  hasTarget: boolean
 }>()
 
 const isBorderBlack = computed(() => localProgress.value <= props.target)

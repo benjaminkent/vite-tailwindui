@@ -21,6 +21,7 @@ const components = [
     props: {
       progress: 50,
       target: 34,
+      hasTarget: true,
     },
   },
 ]

@@ -3,17 +3,21 @@
     <li
       v-for="(component, index) in components"
       :key="index"
-      class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 flex flex-col items-center py-5"
+      class="col-span-1 bg-white rounded-lg shadow flex flex-col items-center py-5"
     >
       <h1 class="text-xl font-bold mb-5">{{ component.name }}</h1>
+      <component :is="component.component" />
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
+import Gauge from '@components/Gauge.vue'
+
 const components = [
   {
-    name: 'Guage',
+    name: 'Gauge',
+    component: Gauge,
   },
 ]
 </script>

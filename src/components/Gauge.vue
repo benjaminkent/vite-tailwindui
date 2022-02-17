@@ -3,7 +3,7 @@
     <div class="barOverflow">
       <div
         class="bar"
-        :style="`transform: rotate(${45 + progress * 1.8}deg);`"
+        :style="`transform: rotate(${45 + localProgress * 1.8}deg);`"
       ></div>
       <div
         :class="[
@@ -23,18 +23,22 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 
-const progress = ref(0)
-const target = 80
+const props = defineProps<{
+  progress: number
+  target: number
+}>()
+
+const isBorderBlack = computed(() => localProgress.value <= props.target)
+
+const localProgress = ref(0)
 
 function setProgress(p: number) {
-  progress.value = p
+  localProgress.value = p
 }
-
-const isBorderBlack = computed(() => progress.value <= 80)
 
 onMounted(() => {
   setTimeout(() => {
-    setProgress(50)
+    setProgress(props.progress)
   }, 1)
 })
 </script>
@@ -74,5 +78,17 @@ onMounted(() => {
   position: absolute;
   right: -15px;
   top: 20px;
+}
+.target-line {
+  width: 68px;
+  position: absolute;
+  top: 46px;
+  left: 52px;
+  transform: rotate(61deg);
+}
+.target {
+  position: absolute;
+  left: -160px;
+  top: -30px;
 }
 </style>

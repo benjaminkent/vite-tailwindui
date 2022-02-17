@@ -6,7 +6,7 @@
       class="col-span-1 bg-white rounded-lg shadow flex flex-col items-center py-5"
     >
       <h1 class="text-xl font-bold mb-5">{{ component.name }}</h1>
-      <component :is="component.component" />
+      <component :is="component.component" v-bind="component.props" />
     </li>
   </ul>
 </template>
@@ -18,6 +18,10 @@ const components = [
   {
     name: 'Gauge',
     component: Gauge,
+    props: {
+      progress: 50,
+      target: 34,
+    },
   },
 ]
 </script>

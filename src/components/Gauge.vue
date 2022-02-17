@@ -12,9 +12,14 @@
           'border-dashed',
           { 'border-t-black': isBorderBlack, 'border-t-white': !isBorderBlack },
         ]"
+        :style="`top: ${targetAttrs?.targetLine.top}px; left: ${targetAttrs?.targetLine.left}px; transform: rotate(${targetAttrs?.targetLine.rotate}deg);`"
       ></div>
     </div>
-    <div v-if="hasTarget" class="target">
+    <div
+      v-if="hasTarget"
+      class="target-copy"
+      :style="`top: ${targetAttrs?.targetCopy.top}px; left: ${targetAttrs?.targetCopy.left}px;`"
+    >
       <p class="text-sm">Target</p>
       <p class="text-sm font-bold">{{ target }}</p>
     </div>
@@ -24,11 +29,58 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 
+interface TargetAttributes {
+  targetLine: {
+    top: number
+    left: number
+    rotate: number
+  }
+  targetCopy: {
+    top: number
+    left: number
+  }
+}
+
 const props = defineProps<{
   progress: number
   target: number
   hasTarget: boolean
 }>()
+
+const targetAttrs = computed(() => {
+  const attrs = ref<TargetAttributes | null>(null)
+
+  switch (props.target) {
+    case 80:
+      attrs.value = {
+        targetLine: {
+          top: 74,
+          left: 180,
+          rotate: 144,
+        },
+        targetCopy: {
+          top: 20,
+          left: 250,
+        },
+      }
+      break
+    case 34:
+      attrs.value = {
+        targetLine: {
+          top: 46,
+          left: 52,
+          rotate: 61,
+        },
+        targetCopy: {
+          top: -30,
+          left: 40,
+        },
+      }
+      break
+  }
+
+  return attrs.value
+})
 
 const isBorderBlack = computed(() => localProgress.value <= props.target)
 
@@ -72,25 +124,8 @@ onMounted(() => {
 .target-line {
   width: 68px;
   position: absolute;
-  top: 74px;
-  right: 21px;
-  transform: rotate(144deg);
 }
-.target {
+.target-copy {
   position: absolute;
-  right: -15px;
-  top: 20px;
-}
-.target-line {
-  width: 68px;
-  position: absolute;
-  top: 46px;
-  left: 52px;
-  transform: rotate(61deg);
-}
-.target {
-  position: absolute;
-  left: -160px;
-  top: -30px;
 }
 </style>

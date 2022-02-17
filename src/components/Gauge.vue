@@ -6,7 +6,7 @@
         :style="`transform: rotate(${45 + localProgress * 1.8}deg);`"
       ></div>
       <div
-        v-if="hasTarget"
+        v-if="hasTarget && target !== null"
         :class="[
           'target-line border-t-3',
           'border-dashed',
@@ -16,7 +16,7 @@
       ></div>
     </div>
     <div
-      v-if="hasTarget"
+      v-if="hasTarget && target !== null"
       class="target-copy"
       :style="`top: ${targetAttrs?.targetCopy.top}px; left: ${targetAttrs?.targetCopy.left}px;`"
     >
@@ -28,22 +28,11 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-
-interface TargetAttributes {
-  targetLine: {
-    top: number
-    left: number
-    rotate: number
-  }
-  targetCopy: {
-    top: number
-    left: number
-  }
-}
+import { TargetAttributes } from '@interfaces'
 
 const props = defineProps<{
   progress: number
-  target: number
+  target: number | null
   hasTarget: boolean
 }>()
 
@@ -55,12 +44,12 @@ const targetAttrs = computed(() => {
       attrs.value = {
         targetLine: {
           top: 74,
-          left: 180,
+          left: 183,
           rotate: 144,
         },
         targetCopy: {
           top: 20,
-          left: 250,
+          left: 248,
         },
       }
       break

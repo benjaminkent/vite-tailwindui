@@ -27,7 +27,7 @@
           leave-to="-translate-x-full"
         >
           <div
-            class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700"
+            class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-zinc-800"
           >
             <TransitionChild
               as="template"
@@ -64,14 +64,14 @@
                   :to="item.to"
                   :class="[
                     item.current.value
-                      ? 'bg-indigo-800 text-white'
-                      : 'text-indigo-100 hover:bg-indigo-600',
+                      ? 'bg-lime-800 text-white'
+                      : 'text-gray-200 hover:bg-lime-600',
                     'group flex items-center px-3 py-3 text-base font-medium rounded-r-md',
                   ]"
                 >
                   <fa-icon
                     :icon="item.icon"
-                    class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
+                    class="mr-4 flex-shrink-0 h-6 w-6 text-lime-300"
                     aria-hidden="true"
                   />
                   {{ item.name }}
@@ -89,7 +89,7 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
+      <div class="flex flex-col flex-grow pt-5 bg-zinc-800 overflow-y-auto">
         <div class="flex items-center flex-shrink-0 px-4">
           <img
             class="h-8 w-auto"
@@ -105,14 +105,14 @@
               :to="item.to"
               :class="[
                 item.current.value
-                  ? 'bg-indigo-800 text-white'
-                  : 'text-indigo-100 hover:bg-indigo-600',
+                  ? ' bg-lime-800 text-white'
+                  : 'text-gray-200 hover:bg-lime-600',
                 'group flex items-center px-3 py-3 text-sm font-medium rounded-r-md',
               ]"
             >
               <fa-icon
                 :icon="item.icon"
-                class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
+                class="mr-3 flex-shrink-0 h-6 w-6 text-lime-300"
                 aria-hidden="true"
               />
               {{ item.name }}

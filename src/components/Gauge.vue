@@ -6,7 +6,7 @@
         :style="`transform: rotate(${45 + localProgress * 1.8}deg);`"
       ></div>
       <div
-        class="progress-number text-2xl font-bold row-start-3 row-end-4 col-start-2 col-end-3 mt-2"
+        class="text-2xl font-bold row-start-3 row-end-4 col-start-2 col-end-3 mt-2"
       >
         <h2>{{ localProgress }}</h2>
       </div>
@@ -139,8 +139,5 @@ onMounted(() => {
 }
 .target-copy {
   position: absolute;
-}
-.progress-number {
-  z-index: 1000;
 }
 </style>

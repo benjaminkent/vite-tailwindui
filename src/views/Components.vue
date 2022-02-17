@@ -1,5 +1,5 @@
 <template>
-  <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <ul role="list" class="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
     <li
       v-for="(component, index) in components"
       :key="index"

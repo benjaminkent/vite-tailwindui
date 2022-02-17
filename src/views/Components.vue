@@ -23,6 +23,8 @@ const components = [
       target: null,
       hasTarget: false,
       title: 'Turnover (In Days)',
+      isTrendingUp: true,
+      hasTrend: false,
     },
   },
   {
@@ -33,6 +35,8 @@ const components = [
       target: 80,
       hasTarget: true,
       title: 'EIP',
+      isTrendingUp: true,
+      hasTrend: true,
     },
   },
   {
@@ -43,6 +47,8 @@ const components = [
       target: 34,
       hasTarget: true,
       title: 'WHS',
+      isTrendingUp: false,
+      hasTrend: true,
     },
   },
 ]

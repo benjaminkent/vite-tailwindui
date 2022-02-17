@@ -28,8 +28,18 @@
       <p class="text-sm">Target</p>
       <p class="text-sm font-bold">{{ target }}</p>
     </div>
-    <div>
-      <h1 class="mt-5 text-lg font-bold">{{ title }}</h1>
+    <div class="flex items-center mt-5 justify-center">
+      <h1 :class="['text-lg', 'font-bold', 'mr-3', { 'ml-6': hasTrend }]">
+        {{ title }}
+      </h1>
+      <div v-if="hasTrend">
+        <fa-icon
+          v-if="isTrendingUp"
+          :icon="['fas', 'arrow-up']"
+          class="text-green-500"
+        />
+        <fa-icon v-else :icon="['fas', 'arrow-down']" class="text-red-500" />
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +53,8 @@ const props = defineProps<{
   target: number | null
   hasTarget: boolean
   title: string
+  isTrendingUp: boolean
+  hasTrend: boolean
 }>()
 
 const targetAttrs = computed(() => {

@@ -28,7 +28,7 @@ const components = [
     },
   },
   {
-    name: 'Gauge - 80% Target',
+    name: 'Gauge - 80 Target',
     component: Gauge,
     props: {
       progress: 70,
@@ -40,7 +40,7 @@ const components = [
     },
   },
   {
-    name: 'Gauge - 34% Target',
+    name: 'Gauge - 34 Target',
     component: Gauge,
     props: {
       progress: 58,

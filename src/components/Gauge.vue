@@ -8,7 +8,7 @@
       <div
         class="progress-number text-2xl font-bold row-start-3 row-end-4 col-start-2 col-end-3 mt-2"
       >
-        <h2>{{ progress }}</h2>
+        <h2>{{ localProgress }}</h2>
       </div>
     </div>
     <div
@@ -97,6 +97,10 @@ const isBorderBlack = computed(() => localProgress.value <= (props.target ?? 0))
 const localProgress = ref(0)
 
 function setProgress(p: number) {
+  if (p > 100) {
+    localProgress.value = 100
+    return
+  }
   localProgress.value = p
 }
 

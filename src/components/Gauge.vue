@@ -1,5 +1,5 @@
 <template>
-  <div class="progress my-5">
+  <div class="progress mt-5">
     <div class="barOverflow grid grid-cols-3 grid-rows-3">
       <div
         class="bar col-start-1 col-end-4 row-start-1 row-end-4"
@@ -28,6 +28,9 @@
       <p class="text-sm">Target</p>
       <p class="text-sm font-bold">{{ target }}</p>
     </div>
+    <div>
+      <h1 class="mt-5 text-lg font-bold">{{ title }}</h1>
+    </div>
   </div>
 </template>
 
@@ -39,6 +42,7 @@ const props = defineProps<{
   progress: number
   target: number | null
   hasTarget: boolean
+  title: string
 }>()
 
 const targetAttrs = computed(() => {

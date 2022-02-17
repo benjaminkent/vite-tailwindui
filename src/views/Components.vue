@@ -19,27 +19,30 @@ const components = [
     name: 'Gauge - No Target',
     component: Gauge,
     props: {
-      progress: 7,
+      progress: 42,
       target: null,
       hasTarget: false,
+      title: 'Turnover (In Days)',
     },
   },
   {
     name: 'Gauge - 80% Target',
     component: Gauge,
     props: {
-      progress: 63,
+      progress: 70,
       target: 80,
       hasTarget: true,
+      title: 'EIP',
     },
   },
   {
     name: 'Gauge - 34% Target',
     component: Gauge,
     props: {
-      progress: 63,
+      progress: 58,
       target: 34,
       hasTarget: true,
+      title: 'WHS',
     },
   },
 ]

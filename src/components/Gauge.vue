@@ -1,20 +1,25 @@
 <template>
   <div class="progress my-5">
-    <div class="barOverflow">
+    <div class="barOverflow grid grid-cols-3 grid-rows-3">
       <div
-        class="bar"
+        class="bar col-start-1 col-end-4 row-start-1 row-end-4"
         :style="`transform: rotate(${45 + localProgress * 1.8}deg);`"
       ></div>
       <div
-        v-if="hasTarget && target !== null"
-        :class="[
-          'target-line border-t-3',
-          'border-dashed',
-          { 'border-t-black': isBorderBlack, 'border-t-white': !isBorderBlack },
-        ]"
-        :style="`top: ${targetAttrs?.targetLine.top}px; left: ${targetAttrs?.targetLine.left}px; transform: rotate(${targetAttrs?.targetLine.rotate}deg);`"
-      ></div>
+        class="progress-number text-2xl font-bold row-start-3 row-end-4 col-start-2 col-end-3 mt-2"
+      >
+        <h2>{{ progress }}</h2>
+      </div>
     </div>
+    <div
+      v-if="hasTarget && target !== null"
+      :class="[
+        'target-line border-t-3',
+        'border-dashed',
+        { 'border-t-black': isBorderBlack, 'border-t-white': !isBorderBlack },
+      ]"
+      :style="`top: ${targetAttrs?.targetLine.top}px; left: ${targetAttrs?.targetLine.left}px; transform: rotate(${targetAttrs?.targetLine.rotate}deg);`"
+    ></div>
     <div
       v-if="hasTarget && target !== null"
       class="target-copy"
@@ -92,13 +97,11 @@ onMounted(() => {
   text-align: center;
 }
 .barOverflow {
-  position: relative;
   overflow: hidden;
   width: 272px;
   height: 130px;
 }
 .bar {
-  position: absolute;
   top: 0;
   left: 0;
   width: 272px;
@@ -116,5 +119,8 @@ onMounted(() => {
 }
 .target-copy {
   position: absolute;
+}
+.progress-number {
+  z-index: 1000;
 }
 </style>

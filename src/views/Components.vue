@@ -19,7 +19,7 @@ const components = [
     name: 'Gauge - No Target',
     component: Gauge,
     props: {
-      progress: 63,
+      progress: 7,
       target: null,
       hasTarget: false,
     },

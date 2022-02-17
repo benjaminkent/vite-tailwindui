@@ -13,6 +13,10 @@
         ]"
       ></div>
     </div>
+    <div class="target">
+      <p class="text-sm">Target</p>
+      <p class="text-sm font-bold">{{ target }}</p>
+    </div>
   </div>
 </template>
 
@@ -20,6 +24,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 const progress = ref(0)
+const target = 80
 
 function setProgress(p: number) {
   progress.value = p
@@ -37,7 +42,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .progress {
   position: relative;
-  float: left;
   text-align: center;
 }
 .barOverflow {
@@ -60,11 +64,15 @@ onMounted(() => {
   transition: all 1s ease-in-out;
 }
 .target-line {
-  // border-top: 3px dashed white;
   width: 68px;
   position: absolute;
   top: 74px;
   right: 21px;
   transform: rotate(144deg);
+}
+.target {
+  position: absolute;
+  right: -15px;
+  top: 20px;
 }
 </style>

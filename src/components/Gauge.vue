@@ -71,7 +71,7 @@ const targetAttrs = computed(() => {
   return attrs.value
 })
 
-const isBorderBlack = computed(() => localProgress.value <= props.target)
+const isBorderBlack = computed(() => localProgress.value <= (props.target ?? 0))
 
 const localProgress = ref(0)
 
